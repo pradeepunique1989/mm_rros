@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mm_rros</name>
+  <version>0.0.0</version>
+  <description>The mm_rros package</description>
+  <maintainer email="pradeepr@todo.todo">pradeepr</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>mm_description</run_depend>
+  <run_depend>mm_control</run_depend>
+  <run_depend>mm_perception</run_depend>
+  <run_depend>mm_navigation</run_depend>
+
+  <export>
+    <architecture_independent/>
+    <metapackage/>
+  </export>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

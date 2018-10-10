@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<robot name="mm_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Included URDF/XACRO Files -->
+    <xacro:include filename="$(find mm_description)/urdf/components/wheels.urdf.xacro" />
+    <xacro:include filename="$(find mm_description)/urdf/components/chassis.urdf.xacro" />
+    <xacro:include filename="$(find mm_description)/urdf/sensors/kinect.urdf.xacro" />
+    <!-- Add UR5 -->
+
+    <xacro:property name="M_PI" value="3.14159"/>
+
+    <!-- Wheel Mounting Positions -->
+    <xacro:property name="track" value="0.48122440" />
+    <xacro:property name="wheel_vertical_offset" value="0.08255015" />
+
+    <!-- Wheel Properties -->
+    <xacro:property name="wheel_length" value="0.09224900" />
+    <xacro:property name="wheel_radius" value="0.2405681" />
+
+    <xacro:macro name="mm_robot">  
+        <!-- Base link is the center of the robot's chassis between the motors projected on the ground -->
+        <link name="base_link"/>
+        
+        <!--Chassis -->
+        <xacro:chassis chassis_prefix="base" parent="base_link">
+            <origin xyz="0 0 ${-wheel_vertical_offset + wheel_radius}" rpy="0 0 0" />
+        </xacro:chassis>
+        
+        <link name="inertial_collision_link">
+			<inertial>
+				<mass value="29.756375" />
+				<origin xyz="0.001751 0.000008 0.018544" />
+				<inertia ixx="0.696269"  ixy="0.016133" ixz="0.003232"
+                         iyx="0.016133"  iyy="0.299110" iyz="-0.000004"
+                         izx="-0.077476" izy="-0.000004" izz="0.864394" />
+			</inertial>
+            <collision>
+				<geometry>
+					<mesh filename="package://mm_description/meshes/collision/chassis.stl" />
+				</geometry>
+			</collision>
+		</link>
+		
+		<joint name="inertial_collision_joint" type="fixed" >
+		    <parent link="base_chassis_link" />
+		    <child link="inertial_collision_link" />
+		</joint>                    
+
+        <!-- Wheel macros -->
+        <xacro:wheel wheel_prefix="left" parent="base_chassis_link" visual_rotation="0.0">
+            <origin xyz="0 ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+        </xacro:wheel>
+
+        <xacro:wheel wheel_prefix="left" parent="base_chassis_link" visual_rotation="0.0">
+            <origin xyz="0 ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+        </xacro:wheel>
+
+        <xacro:wheel wheel_prefix="left" parent="base_chassis_link" visual_rotation="0.0">
+            <origin xyz="0 ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+        </xacro:wheel>
+
+        <xacro:wheel wheel_prefix="left" parent="base_chassis_link" visual_rotation="0.0">
+            <origin xyz="0 ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+        </xacro:wheel>
+        
+
+    </xacro:macro>
+
+</robot>
