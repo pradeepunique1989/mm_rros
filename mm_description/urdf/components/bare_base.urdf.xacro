@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="bare_base">
+
+    <xacro:macro name="bare_base" params="">
+       <link name="bare_base_link">
+          <visual>
+            <origin xyz="0 0 ${base_center_height}" rpy="0 0 0" />
+            <geometry>
+              <box size = "${base_x_size}  ${base_y_size}  ${base_z_size}"/>
+            </geometry>
+            <material name="white"/>
+          </visual>
+          <collision>
+            <origin xyz="0 0 ${base_center_height}" rpy="0 0 0" />
+            <geometry>
+              <box size = "${base_x_size}  ${base_y_size}  ${base_z_size}"/>
+            </geometry>      
+          </collision>     
+        </link>
+
+
+        <link name="base_footprint"/>
+
+        <joint name="base_footprint_joint" type="fixed">
+          <origin xyz="0 0 -${base_center_height}" rpy="0 0 0" />
+          <parent link="bare_base_link" />
+          <child link="base_footprint" />
+        </joint>
+
+        <!-- Interial link stores the robot's inertial information -->
+        <link name="inertial_link">
+          <inertial>
+            <mass value="50"/>
+            <origin xyz="0 0 ${base_center_height}"/>
+            <inertia ixx="2.14" ixy="0.0" ixz="0.0" iyy="3.67" iyz="0.0" izz="3.29"/>
+          </inertial>
+        </link>
+
+        <joint name="inertial_joint" type="fixed">
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <parent link="bare_base_link" />
+          <child link="inertial_link" />
+        </joint>
+
+
+      <link name="world"/>
+      <joint name="world_joint" type="floating">
+        <parent link="world"/>
+        <child link="bare_base_link"/>
+        <axis xyz="0 0 1" rpy="0 0 0" />
+      </joint>
+
+
+
+    </xacro:macro>
+</robot>
+
+

@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
-<package format="2">
+<package>
   <name>mm_description</name>
-  <version>0.0.0</version>
-  <description>The mm_description package</description>
-  <maintainer email="pradeepr@todo.todo">pradeepr</maintainer>
-  <license>TODO</license>
+  <version>0.3.1</version>
+  <description>mobile manipulator URDF description</description>
+
+  <author email="sthakar@usc.edu">Shantanu Thakar</author>
+  <author email="pradeepunique1989@gmail.com">Pradeep Rajendran</author>
+
+  <maintainer email="sthakar@usc.edu">Shantanu Thakar</maintainer>
+  <maintainer email="pradeepunique1989@gmail.com">Pradeep Rajendran</maintainer>
+
+
+
+  <license>BSD</license>
+
   <buildtool_depend>catkin</buildtool_depend>
-  <test_depend>roslaunch</test_depend>
+  <build_depend>roslaunch</build_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>lms1xx</run_depend>
 
-  <!-- <exec_depend>gazebo_plugins</exec_depend> -->
-  <!-- <exec_depend>gazebo_ros</exec_depend> -->
-  <!-- <exec_depend>gazebo_ros_control</exec_depend> -->
-  <!-- <exec_depend>hector_gazebo_plugins</exec_depend> -->
-  <exec_depend>joint_state_publisher</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>urdf</exec_depend>
-  <exec_depend>xacro</exec_depend>
-
-  <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <!-- Other tools can request additional information be placed here -->
-
   </export>
 </package>
