@@ -8,10 +8,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <run_depend>mm_description</run_depend>
-  <run_depend>mm_control</run_depend>
-  <run_depend>mm_perception</run_depend>
-  <run_depend>mm_navigation</run_depend>
+  <!-- <run_depend>mm_description</run_depend> -->
+  <!-- <run_depend>mm_control</run_depend> -->
+  <!-- <run_depend>mm_perception</run_depend> -->
+  <!-- <run_depend>mm_navigation</run_depend> -->
 
   <export>
     <architecture_independent/>
@@ -19,9 +19,4 @@
   </export>
 
 
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- Other tools can request additional information be placed here -->
-
-  </export>
 </package>

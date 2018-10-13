@@ -8,7 +8,10 @@
 	</node>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
-	<node name="rviz" pkg="rviz" type="rviz" args=""/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mm_description)/rviz/robot_visuals.rviz"/>
+
+    <!-- This publishes a static transform between world and bare_base_link (i.e. situates the robot in the world) -->
+	<node name="temporary_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 world bare_base_link 100"/>
 
 
 </launch>
