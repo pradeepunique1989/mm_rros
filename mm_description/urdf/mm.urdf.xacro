@@ -5,17 +5,20 @@
   <xacro:arg name="robot_namespace" default="/" />
 
 
+
   <!-- Included URDF/XACRO Files -->
   <xacro:include filename="$(find mm_description)/urdf/components/inspector_bot.urdf.xacro" />
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
   <xacro:include filename="$(find robotiq_arg2f_model_visualization)/urdf/robotiq_arg2f_140_model_macro.xacro" />
+  <xacro:include filename="$(find mm_description)/urdf/accessories/kinect_camera.urdf.xacro"/>
   
-
-
   <xacro:property name="ur5_z_location" value="${base_center_height + base_z_size/2}" />
   <xacro:property name="ur5_x_location" value="0.2" />
   <xacro:property name="gripper_z_location_ee" value="0.08" />
 
+  <xacro:arg name="kinect_enabled" default="false" />
+  <xacro:arg name="kinect_xyz" default="$(optenv MM_KINECT_XYZ ${base_x_size/2 + 0.03}  ${-base_y_size/2 + 0.12}  ${ur5_z_location - 0.03} )" />
+  <xacro:arg name="kinect_rpy" default="$(optenv MM_KINECT_RPY 0 0.0 0.0)" />
 
   <xacro:bare_base/>
 
@@ -36,5 +39,16 @@
     <child link = "robotiq_arg2f_base_link" />
     <origin xyz="0.0 ${gripper_z_location_ee} 0.0" rpy="${-M_PI/2} 0.0 0.0  " />
   </joint>
+
+  <xacro:if value="$(arg kinect_enabled)">
+
+    <joint name="kinect_frame_joint" type="fixed">
+      <origin xyz="$(arg kinect_xyz)" rpy="$(arg kinect_rpy)" />
+      <parent link="bare_base_link"/>
+      <child link="camera_link"/>
+    </joint>
+
+    <xacro:kinect_camera prefix="camera" robot_namespace="$(arg robot_namespace)"/>
+  </xacro:if>
 
 </robot>
