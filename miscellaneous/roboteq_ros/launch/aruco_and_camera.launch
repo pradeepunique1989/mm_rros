@@ -1,0 +1,13 @@
+<launch>
+  <node name="odometry_publisher" pkg="roboteq_ros" type="roboteq_ros_odom3.py" output="screen" respawn="true">
+  </node>
+
+
+  <node name="demo_base_node" pkg="roboteq_ros" type="demo_base_looper">
+  </node>
+
+
+  <node name="demo_ur5_node" pkg="ros_urx" type="demo_ur5_looper.py">
+  </node>
+
+</launch>
