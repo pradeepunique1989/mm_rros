@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<robot name="inspector_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="robot_namespace" default="/" />
+
+
+
+  <!-- Included URDF/XACRO Files -->
+  <!-- <xacro:include filename="$(find mm_description)/urdf/components/inspector_bot.urdf.xacro" /> -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+  <xacro:include filename="$(find robotiq_arg2f_model_visualization)/urdf/robotiq_arg2f_140_model_macro.xacro" />
+
+  
+
+  <xacro:property name="gripper_z_location_ee" value="0.08" />
+
+
+
+  <xacro:ur5_robot prefix="" joint_limited="false"/>
+  
+  <xacro:robotiq_arg2f_140 prefix=""/>
+
+
+
+
+
+  <joint name="ur_gripper_fixed_joint" type="fixed">
+    <parent link="wrist_3_link" />
+    <child link = "robotiq_arg2f_base_link" />
+    <origin xyz="0.0 ${gripper_z_location_ee} 0.0" rpy="${-3.1412/2} 0.0 0.0  " />
+  </joint>
+
+
+
+</robot>
