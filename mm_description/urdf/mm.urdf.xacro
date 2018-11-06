@@ -49,7 +49,7 @@
       <child link="kinect1_link"/>
     </joint>
 
-    <xacro:kinect_camera prefix="camera" robot_namespace="$(arg robot_namespace)"/>
+    <xacro:kinect_camera prefix="kinect1" robot_namespace="$(arg robot_namespace)"/>
   </xacro:if>
 
 </robot>
