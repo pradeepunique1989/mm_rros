@@ -1,0 +1,8 @@
+<launch>
+  <node name="odom_publisher_node" pkg="roboteq_ros" type="base_odom_publisher.py" output="screen" respawn="true">
+  </node>
+<!--  <node name="map_server_node" pkg="map_server" type="map_server" output="screen" args="/home/mm/Desktop/test4.yaml">
+  </node>
+-->
+<!--  <node name="temporary_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map odom 100"/>-->
+</launch>

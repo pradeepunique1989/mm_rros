@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gui" default="True" />
+  
+  <param name="robot_description2" command="$(find xacro)/xacro --inorder $(find robotiq_description)/urdf/robotiq_85_gripper.xacro" />
+  
+<!--   <param name="use_gui" value="$(arg gui)"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+ -->  
+<!--   <node name="robot_state_publisher1" pkg="robot_state_publisher" type="state_publisher" />
+ -->  
+
+  <!-- 
+
+  world - gripper root - 0s
+
+  	grip root - rob 85 base link - xyz 0.05 0 0.85
+
+  		rob 85 base link - left inner knuckle - xyz 0.061 0.013 0.0 - rpy - -3.142 0 0
+
+	  		left inner knuckle - left finger tip - - Translation: [0.043, -0.038, 0.000]
+			- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+			            in RPY (radian) [0.000, -0.000, 0.000]
+			            in RPY (degree) [0.000, -0.000, 0.000]
+
+
+
+		rob 85 base link - left      knuckle - - Translation: [0.055, 0.031, 0.000]
+		- Rotation: in Quaternion [1.000, 0.000, 0.000, -0.000]
+		            in RPY (radian) [-3.142, -0.000, 0.000]
+		            in RPY (degree) [-180.000, -0.000, 0.000]
+
+	  		left knuckle - left finger - - 
+			- Translation: [-0.004, -0.031, 0.000]
+			- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+			            in RPY (radian) [0.000, -0.000, 0.000]
+			            in RPY (degree) [0.000, -0.000, 0.000]
+
+
+
+		rob 85 base link - right inner knuckle - - Translation: [0.061, -0.013, 0.000]
+		- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+		            in RPY (radian) [0.000, -0.000, 0.000]
+		            in RPY (degree) [0.000, -0.000, 0.000]
+
+	  		right inner knuckle - right finger tip - - - Translation: [0.043, -0.038, 0.000]
+			- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+			            in RPY (radian) [0.000, -0.000, 0.000]
+			            in RPY (degree) [0.000, -0.000, 0.000]
+
+
+
+		rob 85 base link - right      knuckle - - Translation: [0.055, -0.031, 0.000]
+		- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+		            in RPY (radian) [0.000, -0.000, 0.000]
+		            in RPY (degree) [0.000, -0.000, 0.000]
+
+	  		right  knuckle - right finger  - - - - Translation: [-0.004, -0.031, 0.000]
+			- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+			            in RPY (radian) [0.000, -0.000, 0.000]
+			            in RPY (degree) [0.000, -0.000, 0.000]
+
+
+
+
+
+
+
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> -->
+
+
+
+
+<!-- 	<node name="temporary_publisher1" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 marker_ee_link gripper_root_link 100"/>
+	<node name="temporary_publisher2" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 -1.57 gripper_root_link robotiq_85_base_link 100"/>
+
+	<node name="temporary_publisher3" pkg="tf" type="static_transform_publisher" args="0.061 0.013 0.0 1 0 0 0 robotiq_85_base_link robotiq_85_left_inner_knuckle_link 100"/>
+	<node name="temporary_publisher4" pkg="tf" type="static_transform_publisher" args="0.055 0.031 0.0 1 0 0 0 robotiq_85_base_link robotiq_85_left_knuckle_link 100"/>
+	<node name="temporary_publisher5" pkg="tf" type="static_transform_publisher" args="0.061 -0.013 0.0 0.0 0 0 robotiq_85_base_link robotiq_85_right_inner_knuckle_link 100"/>
+	<node name="temporary_publisher6" pkg="tf" type="static_transform_publisher" args="0.055 -0.031 0.0 0.0 0 0 robotiq_85_base_link robotiq_85_right_knuckle_link 100"/>
+
+	<node name="temporary_publisher7" pkg="tf" type="static_transform_publisher" args="0.043 -0.038 0.0 0.0 0 0 robotiq_85_left_inner_knuckle_link robotiq_85_left_finger_tip_link 100"/>
+
+	<node name="temporary_publisher8" pkg="tf" type="static_transform_publisher" args="-0.004 -0.031 0.0 0.0 0 0 robotiq_85_left_knuckle_link robotiq_85_left_finger_link 100"/>
+
+	<node name="temporary_publisher9" pkg="tf" type="static_transform_publisher" args="0.043 -0.038 0.0 0.0 0 0 robotiq_85_right_inner_knuckle_link robotiq_85_right_finger_tip_link 100"/>
+
+   <node name="temporary_publisher10" pkg="tf" type="static_transform_publisher" args="-0.004 -0.031 0.0 0.0 0 0 robotiq_85_right_knuckle_link robotiq_85_right_finger_link 100"/>
+ -->
+
+
+
+
+	<node name="temporary_publisher15" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 marker_ee_link gripper_root_link 100"/>
+	<node name="temporary_publisher25" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 -1.57 gripper_root_link robotiq_85_base_link 100"/>
+
+<!-- 	<node name="temporary_publisher3" pkg="tf" type="static_transform_publisher" args="0.061 0.013 0.0 0.967 -0.256 0.0 0.0 robotiq_85_base_link robotiq_85_left_inner_knuckle_link 100"/>
+	<node name="temporary_publisher4" pkg="tf" type="static_transform_publisher" args="0.055 0.031 0.000 0.967 -0.256 0.0 0.0 robotiq_85_base_link robotiq_85_left_knuckle_link 100"/>
+	<node name="temporary_publisher5" pkg="tf" type="static_transform_publisher" args="0.061 -0.013 0.0 0.0 0.0 0.256 0.967 robotiq_85_base_link robotiq_85_right_inner_knuckle_link 100"/>
+	<node name="temporary_publisher6" pkg="tf" type="static_transform_publisher" args="0.055 -0.031 0.0 0.0 0.0 0.256 0.967 robotiq_85_base_link robotiq_85_right_knuckle_link 100"/>
+ -->
+<!-- 	<node name="temporary_publisher7" pkg="tf" type="static_transform_publisher" args="0.043 -0.038 0.0 0.0 0.0 -0.256 0.967 robotiq_85_left_inner_knuckle_link robotiq_85_left_finger_tip_link 100"/> -->
+
+<!-- 	<node name="temporary_publisher8" pkg="tf" type="static_transform_publisher" args="-0.004 -0.031 0.0 0.0 0.0 0.0 1.0 robotiq_85_left_knuckle_link robotiq_85_left_finger_link 100"/>
+ -->
+<!-- 	<node name="temporary_publisher9" pkg="tf" type="static_transform_publisher" args="0.043 -0.038 0.0 0.0 0.0 -0.256 0.967 robotiq_85_right_inner_knuckle_link robotiq_85_right_finger_tip_link 100"/>
+ -->
+   <!-- <node name="temporary_publisher10" pkg="tf" type="static_transform_publisher" args="-0.004 -0.031 0.0 0 0 0 1 robotiq_85_right_knuckle_link robotiq_85_right_finger_link 100"/> -->
+
+
+
+
+
+
+<!--                                 FULL CLOSE                                     -->
+
+<!-- mm-pc: rosrun tf tf_echo robotiq_85_base_link robotiq_85_left_inner_knuckle_link
+At time 1541044181.811
+- Translation: [0.061, 0.013, 0.000]
+- Rotation: in Quaternion [0.921, -0.391, -0.000, -0.000]
+            in RPY (radian) [-3.142, 0.000, -0.803]
+            in RPY (degree) [-180.000, 0.000, -46.000]
+At time 1541044182.411
+- Translation: [0.061, 0.013, 0.000]
+- Rotation: in Quaternion [0.921, -0.391, -0.000, -0.000]
+            in RPY (radian) [-3.142, 0.000, -0.803]
+            in RPY (degree) [-180.000, 0.000, -46.000]
+^Cmm-pc: ^C
+mm-pc: ^C
+mm-pc: rosrun tf tf_echo robotiq_85_base_link robotiq_85_left_knuckle_link
+At time 1541044193.811
+- Translation: [0.055, 0.031, 0.000]
+- Rotation: in Quaternion [0.921, -0.391, -0.000, -0.000]
+            in RPY (radian) [-3.142, 0.000, -0.803]
+            in RPY (degree) [-180.000, 0.000, -46.000]
+^CAt time 1541044194.411
+- Translation: [0.055, 0.031, 0.000]
+- Rotation: in Quaternion [0.921, -0.391, -0.000, -0.000]
+            in RPY (radian) [-3.142, 0.000, -0.803]
+            in RPY (degree) [-180.000, 0.000, -46.000]
+mm-pc: rosrun tf tf_echo robotiq_85_base_link robotiq_85_right_inner_knuckle_link
+At time 1541044203.711
+- Translation: [0.061, -0.013, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.391, 0.921]
+            in RPY (radian) [0.000, -0.000, 0.803]
+            in RPY (degree) [0.000, -0.000, 46.000]
+^CAt time 1541044204.311
+- Translation: [0.061, -0.013, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.391, 0.921]
+            in RPY (radian) [0.000, -0.000, 0.803]
+            in RPY (degree) [0.000, -0.000, 46.000]
+mm-pc: rosrun tf tf_echo robotiq_85_base_link robotiq_85_right_knuckle_link
+At time 1541044212.311
+- Translation: [0.055, -0.031, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.391, 0.921]
+            in RPY (radian) [0.000, -0.000, 0.803]
+            in RPY (degree) [0.000, -0.000, 46.000]
+^Cmm-pc: ^C
+mm-pc: rosrun tf tf_echo robotiq_85_left_inner_knuckle_link robotiq_85_left_finger_tip_link
+At time 1541044219.411
+- Translation: [0.043, -0.038, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, -0.391, 0.921]
+            in RPY (radian) [0.000, 0.000, -0.803]
+            in RPY (degree) [0.000, 0.000, -46.000]
+^CAt time 1541044219.911
+- Translation: [0.043, -0.038, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, -0.391, 0.921]
+            in RPY (radian) [0.000, 0.000, -0.803]
+            in RPY (degree) [0.000, 0.000, -46.000]
+mm-pc: ^C
+mm-pc: ^C
+mm-pc: rosrun tf tf_echo robotiq_85_left_knuckle_link robotiq_85_left_finger_link
+
+At time 0.000
+- Translation: [-0.004, -0.031, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.000]
+            in RPY (degree) [0.000, -0.000, 0.000]
+^Cmm-pc: ^C
+mm-pc: rosrun tf tf_echo robotiq_85_right_inner_knuckle_link robotiq_85_right_finger_tip_link
+At time 1541044229.111
+- Translation: [0.043, -0.038, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, -0.391, 0.921]
+            in RPY (radian) [0.000, 0.000, -0.803]
+            in RPY (degree) [0.000, 0.000, -46.000]
+At time 1541044229.811
+- Translation: [0.043, -0.038, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, -0.391, 0.921]
+            in RPY (radian) [0.000, 0.000, -0.803]
+            in RPY (degree) [0.000, 0.000, -46.000]
+^Cmm-pc: ^C
+mm-pc: ^C
+mm-pc: rosrun tf tf_echo robotiq_85_right_knuckle_link robotiq_85_right_finger_link
+At time 0.000
+- Translation: [-0.004, -0.031, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.000]
+            in RPY (degree) [0.000, -0.000, 0.000]
+At time 0.000
+- Translation: [-0.004, -0.031, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.000]
+            in RPY (degree) [0.000, -0.000, 0.000]
+
+ -->
+
+
+
+
+<!--   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotiq_description)/config/robotiq_85.rviz  " required="true" />
+ -->
+
+  <node name="sim_gripper_node" pkg="roboteq_ros" type="sim_gripper_node.py" output="screen">
+  </node>
+
+  <node name="real_gripper_node" pkg="roboteq_ros" type="gripper_node2.py" output="screen">
+  </node>
+
+</launch>

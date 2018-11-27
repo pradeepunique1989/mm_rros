@@ -1,0 +1,33 @@
+static ur5 plus move it pick and place:
+
+
+ - 3 ur5 move it things
+ - test gripper == contains static tfs and sim gripper(sim gripper show + open/close)
+ - k2
+ - k2 to ur5moveitrot
+
+
+
+--->  sim gripper	 and	 real gripper publishers
+
+
+
+
+
+roslaunch ur_modern_driver ur5_bringup.launch limited:=true robot_ip:=192.168.1.9
+
+roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch limited:=true
+
+roslaunch ur5_moveit_config moveit_rviz.launch config:=true
+
+-X- roslaunch ~/Desktop/test_launch/test_gripper.launch
+
+-X- roslaunch ~/Desktop/test_launch/k2.launch
+
+-X- roslaunch ~/Desktop/test_launch/k2_to_moveit_rot.launch
+
+all in test_base.launch
+
+odompubnode
+
+rosrun ur5moveitconfig real robot test

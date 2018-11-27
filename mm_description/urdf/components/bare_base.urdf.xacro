@@ -44,9 +44,9 @@
         </joint>
 
 
-      <link name="world"/>
+      <link name="world2"/>
       <joint name="world_joint" type="floating">
-        <parent link="world"/>
+        <parent link="world2"/>
         <child link="bare_base_link"/>
         <axis xyz="0 0 1" rpy="0 0 0" />
       </joint>

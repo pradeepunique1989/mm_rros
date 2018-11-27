@@ -1,0 +1,4 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="depth_broadcaster" args="0.1524 -0.508 0.37465 0.75 0 -1.57 base_link camera2_depth_optical_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="rgb_broadcaster" args="0.1524 -0.508 0.37465 0.75 0 -1.57 base_link camera2_rgb_optical_frame 100" />
+</launch>

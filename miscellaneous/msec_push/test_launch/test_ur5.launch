@@ -1,0 +1,34 @@
+<!--===================================================================================================-->
+<!-- 					odom pub, kinect1, rtabmap, base navigation	                  				   -->
+<!--===================================================================================================-->
+<launch>
+
+    <include file="/home/mm/catkin_ws/src/universal_robot/ur_bringup/launch/ur5_bringup.launch">
+      <arg name="limited" value="true"/>
+      <arg name="robot_ip" value="192.168.1.9"/>
+    </include>
+
+
+
+    <include file="/home/mm/catkin_ws/src/universal_robot/ur5_moveit_config/launch/ur5_moveit_planning_execution.launch">
+      <arg name="limited" value="true"/>
+    </include>
+
+
+
+    <include file="/home/mm/catkin_ws/src/universal_robot/ur5_moveit_config/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+    </include>    
+
+
+
+    <include file="/home/mm/Desktop/test_launch/test_gripper.launch"/>
+
+    <include file="/home/mm/Desktop/test_launch/k2.launch"/>
+
+    <include file="/home/mm/Desktop/test_launch/k2_to_moveit_rot.launch"/>    
+
+
+
+</launch>
+<!--===================================================================================================-->

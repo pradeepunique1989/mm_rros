@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="robot_namespace" default="/"/>
+  <!-- <arg name="kinect_enabled" default="$(optenv MM_KINECT_ENABLED true)"/> -->
+
+
+  <param name="robot_description3" command="$(find xacro)/xacro '$(find mm_description)/urdf/base.urdf.xacro'
+    --inorder
+    robot_namespace:=$(arg robot_namespace)
+    " />
+
+<!--   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  	<param name="use_gui" value="TRUE"/>
+  </node> -->
+
+
+<!-- pi = 3.1416 -->
+
+  <arg name="bx" default="0.76"/>
+  <arg name="by" default="0.46"/>
+  <arg name="bz" default="0.55"/>
+
+  <arg name="bch" default="0.4"/>
+
+  <arg name="ur5x" default="0.2"/>
+  <arg name="ur5y" default="0.0"/>
+  <arg name="ur5z" default="$(eval arg('bch') + 0.5* arg('bz'))"/>
+
+  <arg name="ur5yaw" default="1.5708"/>
+
+  <arg name="k1x" default="$(eval 0.5*arg('bx') + 0.03 + 0.025 )"/>
+  <arg name="k1y" default="$(eval -0.5*arg('by') + 0.12 )"/>
+  <arg name="k1z" default="$(eval arg('ur5z') - 0.03 )"/>
+
+
+
+<!--   <xacro:property name="base_x_size" value="0.76" />
+  <xacro:property name="base_y_size" value="0.46" />
+  <xacro:property name="base_z_size" value="0.55" />
+  <xacro:property name="ur5_z_location" value="${base_center_height + base_z_size/2}" />
+  <xacro:arg name="kinect_xyz" default="$(optenv MM_KINECT_XYZ ${base_x_size/2 + 0.03 + 0.025}  ${-base_y_size/2 + 0.12}  ${ur5_z_location - 0.03} )" />
+
+  <joint name="ur_fixed_joint" type="fixed">
+    <parent link="bare_base_link" />
+    <child link = "base_link" />
+    <origin xyz="${ur5_x_location} 0.0 ${ur5_z_location}" rpy="0.0 0.0 ${M_PI/2}  " />
+  </joint>
+
+  <xacro:property name="wheel_vertical_offset" value="0.2" />
+  <xacro:property name="wheel_radius" value="0.2" />
+  <xacro:property name="base_center_height" value="${wheel_vertical_offset + wheel_radius}" />
+ -->
+
+
+
+<!-- base -->
+
+<node name="temporary_publisher1" pkg="tf" type="static_transform_publisher" args="-0.22 0.355 0.2 0 0 0 bare_base_link rear_left_wheel_link 100"/>
+<node name="temporary_publisher2" pkg="tf" type="static_transform_publisher" args="-0.22 -0.355 0.2 0 0 0 bare_base_link rear_right_wheel_link 100"/>
+<node name="temporary_publisher3" pkg="tf" type="static_transform_publisher" args="0.22 0.355 0.2 0 0 0 bare_base_link front_left_wheel_link 100"/>
+<node name="temporary_publisher4" pkg="tf" type="static_transform_publisher" args="0.22 -0.355 0.2 0 0 0 bare_base_link front_right_wheel_link 100"/>
+<node name="temporary_publisher5" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 bare_base_link inertial_link 100"/>
+<node name="temporary_publisher6" pkg="tf" type="static_transform_publisher" args="0 0 -0.4 0 0 0 bare_base_link base_footprint 100"/>
+
+
+<!-- kinect -->
+
+<node name="temporary_publisher7" pkg="tf" type="static_transform_publisher" args="0.435 -0.11 0.645 0 0 0 bare_base_link kinect1_link 100"/>
+
+
+<!-- ur5 -->
+
+<node name="temporary_publisher9" pkg="tf" type="static_transform_publisher" args="0.127 -0.025 0.675 -1.5708 0 0 bare_base_link world 100"/>
+
+
+
+<!-- k2 rot -->
+
+<node pkg="tf" type="static_transform_publisher" name="depth_broadcaster" args="0.12 -0.52 0.39 0.65 0 -1.58 base_link camera2_depth_optical_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="rgb_broadcaster" args="0.12 -0.49 0.39 0.65 0 -1.56 base_link camera2_rgb_optical_frame 100" />
+
+
+<!-- 
+part looks good
+<node pkg="tf" type="static_transform_publisher" name="depth_broadcaster" args="0.152 -0.54 0.375 0.76 0 -1.58 base_link camera2_depth_optical_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="rgb_broadcaster" args="0.152 -0.51 0.375 0.76 0 -1.56 base_link camera2_rgb_optical_frame 100" />
+ -->
+
+
+
+<!-- 
+ the og values
+
+<node pkg="tf" type="static_transform_publisher" name="depth_broadcaster" args="0.1524 -0.508 0.37465 0.75 0 -1.57 base_link camera2_depth_optical_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="rgb_broadcaster" args="0.1524 -0.508 0.37465 0.75 0 -1.57 base_link camera2_rgb_optical_frame 100" />
+ -->
+
+
+
+<!-- k1 frame set to barebaselink -->
+<node name="temporary_publisher8" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 bare_base_link camera_link 100"/>
+
+
+
+<!-- bx: 0.76
+by: 0.46
+bz: 0.55
+bch: 0.4
+ux: 0.2
+uy: 0.0
+uz: 0.675
+uyy: 1.5708
+kx: 0.435
+ky: -0.11
+kz: 0.645
+ -->
+
+
+
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+<!--   <node name="rviz" pkg="rviz" type="rviz"/>
+ -->
+
+
+
+
+
+<include file="/home/mm/Desktop/test_launch/k2.launch"/>
+
+<include file="/home/mm/Desktop/test_launch/test_gripper.launch"/>
+
+<include file="$(find freenect_launch)/launch/freenect.launch">
+  <arg name="depth_registration" value="true"/>
+  <arg name="device_id" value="B00363705202044B"/>
+</include>
+
+<node name="odompubnode" pkg="roboteq_ros" type="base_odom_publisher.py" respawn="true" />
+
+<node name="guinode" pkg="ur5_moveit_config" type="real_robot_test.py" respawn="true" />
+
+
+</launch>

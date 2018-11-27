@@ -1,0 +1,14 @@
+<!-- odom pub, kinect1, rtabmap, base navigation	                  						   -->
+<!--===================================================================================================-->
+<launch>
+    <node name="odom_node" pkg="roboteq_ros" type="base_odom_publisher.py" output="screen" respawn="true"/>
+
+    <include file="/opt/ros/kinetic/share/freenect_launch/launch/freenect.launch">
+      <arg name="depth_registration" value="true"/>
+      <arg name="device_id" value="B00363705202044B"/>
+    </include>
+
+    <include file="/home/mm/catkin_ws/src/roboteq_ros/launch/base_navigation.launch"/>
+</launch>
+<!--===================================================================================================-->
+

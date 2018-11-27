@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<robot name="inspector_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="robot_namespace" default="/" />
+
+  <!-- Included URDF/XACRO Files -->
+  <xacro:include filename="$(find mm_description)/urdf/components/inspector_bot.urdf.xacro" />
+  <xacro:bare_base/>
+
+</robot>
