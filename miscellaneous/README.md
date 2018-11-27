@@ -14,3 +14,7 @@ Post-2018-Manufacturing-Day codes related to
   
   
   [including launch files]
+
+
+
+======> basic launch steps in msecpush/testlaunch/staticsteps
